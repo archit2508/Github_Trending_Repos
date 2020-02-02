@@ -7,6 +7,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivitiesContributorModule{
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [RepoListViewModelModule::class])
     abstract fun contributeRepoListActivity(): RepoListActivity
 }

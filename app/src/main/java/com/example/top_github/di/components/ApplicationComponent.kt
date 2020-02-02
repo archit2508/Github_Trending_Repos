@@ -1,11 +1,8 @@
 package com.example.top_github.di.components
 
 import android.app.Application
+import com.example.top_github.di.modules.*
 import com.example.top_github.ui.BaseApplication
-import com.example.top_github.di.modules.ActivitiesContributorModule
-import com.example.top_github.di.modules.AppModule
-import com.example.top_github.di.modules.RepoListViewModelModule
-import com.example.top_github.di.modules.ViewModelFactoryModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -18,7 +15,8 @@ import javax.inject.Singleton
     ActivitiesContributorModule::class,
     AppModule::class,
     ViewModelFactoryModule::class,
-    RepoListViewModelModule::class])
+    RepoListViewModelModule::class,
+    NetworkCallModule::class])
 interface ApplicationComponent : AndroidInjector<BaseApplication> {
 
     @Component.Builder
