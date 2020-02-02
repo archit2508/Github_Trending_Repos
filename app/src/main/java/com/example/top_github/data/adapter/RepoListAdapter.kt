@@ -9,7 +9,7 @@ import com.example.top_github.data.model.TrendingRepos
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.result_item.view.*
 
-class RepoListAdapter(private val repoList: List<TrendingRepos>): RecyclerView.Adapter<RepoListAdapter.RepoItemViewHolder>() {
+class RepoListAdapter(private var repoList: List<TrendingRepos>): RecyclerView.Adapter<RepoListAdapter.RepoItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoItemViewHolder =
         RepoItemViewHolder(
@@ -17,6 +17,10 @@ class RepoListAdapter(private val repoList: List<TrendingRepos>): RecyclerView.A
         )
 
     override fun getItemCount(): Int = repoList.size
+
+    fun setItems(repoList: List<TrendingRepos>){
+        this.repoList = repoList
+    }
 
     override fun onBindViewHolder(holder: RepoItemViewHolder, position: Int) {
         if (repoList[position].avatar != null)

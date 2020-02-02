@@ -9,8 +9,12 @@ import javax.inject.Inject
 
 class RepoListViewModel @Inject constructor() : ViewModel() {
 
-    @Inject
-    lateinit var trendingReposRepo: TrendingReposRepo
+    @Inject lateinit var trendingReposRepo: TrendingReposRepo
+    var repoListLiveData = MutableLiveData<List<TrendingRepos>>()
+
+    fun setRepoListLiveData(repoList: List<TrendingRepos>){
+        repoListLiveData.postValue(repoList)
+    }
 
     fun fetchTrendingRepos(language: String): MutableLiveData<List<TrendingRepos>>{
         return trendingReposRepo.fetchTrendingRepos(language)
