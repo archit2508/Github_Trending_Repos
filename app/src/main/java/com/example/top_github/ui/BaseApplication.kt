@@ -1,4 +1,4 @@
-package com.example.top_github
+package com.example.top_github.ui
 
 import com.example.top_github.di.components.DaggerApplicationComponent
 import dagger.android.AndroidInjector
