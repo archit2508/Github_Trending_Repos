@@ -8,6 +8,6 @@ data class TrendingRepos (
     @SerializedName("name") val name : String,
     @SerializedName("type") val type : String,
     @SerializedName("url") val url : String,
-    @SerializedName("avatar") val avatar : String,
+    @SerializedName("avatar") val avatar : String?,
     @SerializedName("repo") val repo : Repo
 )
