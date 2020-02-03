@@ -3,13 +3,20 @@ package com.example.top_github.data.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.top_github.R
 import com.example.top_github.data.model.TrendingRepos
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.result_item.view.*
 
-class RepoListAdapter(private var repoList: List<TrendingRepos>): RecyclerView.Adapter<RepoListAdapter.RepoItemViewHolder>() {
+class RepoListAdapter(private var repoList: List<TrendingRepos>, onItemClickListener: OnItemClickListener): RecyclerView.Adapter<RepoListAdapter.RepoItemViewHolder>() {
+
+    private var itemClickListener: OnItemClickListener? = null
+    init {
+        this.itemClickListener = onItemClickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoItemViewHolder =
         RepoItemViewHolder(
@@ -28,10 +35,18 @@ class RepoListAdapter(private var repoList: List<TrendingRepos>): RecyclerView.A
         holder.itemView.title.text = repoList[position].repo.name
         holder.itemView.desc.text = repoList[position].username
 
-//        holder.itemView.setOnClickListener {
-//            listener.onResultItemClick(pages[position].pageid.toString())
-//        }
+        holder.itemView.setOnClickListener {
+            itemClickListener?.onResultItemClick(
+                repoList[position],
+                holder.itemView.imageView,
+                holder.itemView.title,
+                holder.itemView.desc)
+        }
     }
 
     class RepoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    interface OnItemClickListener {
+        fun onResultItemClick(repoDetails: TrendingRepos, imageView: ImageView, titleView: TextView, descView: TextView)
+    }
 }

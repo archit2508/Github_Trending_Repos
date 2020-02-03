@@ -1,27 +1,35 @@
 package com.example.top_github.ui.activities
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.top_github.R
 import com.example.top_github.data.adapter.RepoListAdapter
 import com.example.top_github.data.model.TrendingRepos
+import com.example.top_github.utils.AppConstants
 import com.example.top_github.viewModels.RepoListViewModel
 import com.example.top_github.viewModels.ViewModelFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_list_repo.*
 import javax.inject.Inject
 
-class RepoListActivity : DaggerAppCompatActivity() {
+
+class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickListener {
 
     var repoList = listOf<TrendingRepos>()
     lateinit var repoListAdapter: RepoListAdapter
@@ -34,7 +42,7 @@ class RepoListActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_repo)
 
-        repoListAdapter = RepoListAdapter(repoList)
+        repoListAdapter = RepoListAdapter(repoList, this)
         rvResults.layoutManager = LinearLayoutManager(this)
         rvResults.adapter = repoListAdapter
 
@@ -173,5 +181,19 @@ class RepoListActivity : DaggerAppCompatActivity() {
             inputMethodManager!!.hideSoftInputFromWindow(
                 activity.currentFocus!!.windowToken, 0
             )
+    }
+
+    override fun onResultItemClick(repoDetails: TrendingRepos, imageView: ImageView, titleView: TextView, descView: TextView) {
+        val imageViewPair = Pair.create<View, String>(imageView, this.getString(R.string.transition_image))
+        val titleViewPair = Pair.create<View, String>(titleView, this.getString(R.string.transition_title))
+        val descViewPair = Pair.create<View, String>(descView, this.getString(R.string.transition_desc))
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            imageViewPair,
+            titleViewPair,
+            descViewPair)
+        val intent = Intent(this, RepoDetailsActivity::class.java)
+        intent.putExtra(AppConstants.INTENT_DATA, repoDetails)
+        ActivityCompat.startActivity(this, intent, options.toBundle())
     }
 }
