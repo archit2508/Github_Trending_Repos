@@ -1,7 +1,6 @@
 package com.example.top_github.ui.activities
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -21,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.top_github.R
 import com.example.top_github.data.adapter.RepoListAdapter
 import com.example.top_github.data.model.TrendingRepos
+import com.example.top_github.imageCaching.core.ImageManager
 import com.example.top_github.utils.AppConstants
 import com.example.top_github.viewModels.RepoListViewModel
 import com.example.top_github.viewModels.ViewModelFactory
@@ -34,15 +34,15 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
     var repoList = listOf<TrendingRepos>()
     lateinit var repoListAdapter: RepoListAdapter
     lateinit var repoListViewModel: RepoListViewModel
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    @Inject lateinit var viewModelFactory: ViewModelFactory
+    @Inject lateinit var imageManager: ImageManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_repo)
 
-        repoListAdapter = RepoListAdapter(repoList, this)
+        repoListAdapter = RepoListAdapter(repoList, this, imageManager)
         rvResults.layoutManager = LinearLayoutManager(this)
         rvResults.adapter = repoListAdapter
 

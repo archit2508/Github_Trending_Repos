@@ -8,15 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.top_github.R
 import com.example.top_github.data.model.TrendingRepos
+import com.example.top_github.imageCaching.core.ImageManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.result_item.view.*
+import javax.inject.Inject
 
-class RepoListAdapter(private var repoList: List<TrendingRepos>, onItemClickListener: OnItemClickListener): RecyclerView.Adapter<RepoListAdapter.RepoItemViewHolder>() {
-
-    private var itemClickListener: OnItemClickListener? = null
-    init {
-        this.itemClickListener = onItemClickListener
-    }
+class RepoListAdapter(
+    private var repoList: List<TrendingRepos>,
+    var itemClickListener: OnItemClickListener,
+    var imageManager: ImageManager): RecyclerView.Adapter<RepoListAdapter.RepoItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoItemViewHolder =
         RepoItemViewHolder(
@@ -30,8 +30,10 @@ class RepoListAdapter(private var repoList: List<TrendingRepos>, onItemClickList
     }
 
     override fun onBindViewHolder(holder: RepoItemViewHolder, position: Int) {
-        if (repoList[position].avatar != null)
-            Picasso.get().load(repoList[position].avatar).into(holder.itemView.imageView)
+        repoList[position].avatar.let {
+            imageManager.displayImage(repoList[position].avatar!!, holder.itemView.imageView, R.drawable.ic_adb_black_24dp)
+        }
+
         holder.itemView.title.text = repoList[position].repo.name
         holder.itemView.desc.text = repoList[position].username
 
