@@ -32,4 +32,9 @@ class RepoDetailsActivity : AppCompatActivity() {
             item_desc_url.text = repoDetails?.repo?.url
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAfterTransition()
+    }
 }
