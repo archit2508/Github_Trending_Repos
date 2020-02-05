@@ -3,6 +3,9 @@ package com.example.top_github.imageCaching.cache
 import android.content.Context
 import android.graphics.Bitmap
 
+/**
+ * Main Repository which puts and gets bitmap data to/from both Memory and Disk cache
+ */
 class CacheRepository (context: Context , newMaxSize: Int ): ImageCache{
 
     private val diskCache = DiskCache.getInstance(context)

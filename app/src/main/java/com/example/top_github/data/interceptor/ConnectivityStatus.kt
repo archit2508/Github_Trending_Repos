@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.net.ConnectivityManager
 
+/**
+ * used to check internet connection availability on the device at real time
+ */
 class ConnectivityStatus(base: Context?) : ContextWrapper(base) {
     companion object {
         @JvmStatic

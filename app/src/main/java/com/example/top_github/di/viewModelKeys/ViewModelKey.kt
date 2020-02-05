@@ -7,6 +7,9 @@ import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
 import kotlin.reflect.KClass
 
+/**
+ * Generates keys for view model class as values in viewModelMap
+ */
 @Documented
 @Target(
     AnnotationTarget.FUNCTION,

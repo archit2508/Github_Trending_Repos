@@ -7,6 +7,9 @@ import com.example.top_github.data.remoteRepo.TrendingReposRepo
 import com.example.top_github.data.response.Response
 import javax.inject.Inject
 
+/**
+ * Used by Repo list screen to fetch and store repo list data into live data
+ */
 class RepoListViewModel @Inject constructor() : ViewModel() {
 
     @Inject lateinit var trendingReposRepo: TrendingReposRepo

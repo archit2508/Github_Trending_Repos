@@ -10,6 +10,9 @@ import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_repo_details.*
 import javax.inject.Inject
 
+/**
+ * Will be instantiated to show more details whenever a repository item is clicked in RepoListActivity
+ */
 class RepoDetailsActivity : DaggerAppCompatActivity() {
 
     private var repoDetails: TrendingRepos? = null

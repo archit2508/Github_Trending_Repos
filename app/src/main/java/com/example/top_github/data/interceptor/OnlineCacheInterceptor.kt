@@ -6,6 +6,10 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 
+/**
+ * WIll retain and return cached api response only when online
+ * will retain online cache for 10 seconds
+ */
 class OnlineCacheInterceptor(private val context: Context) : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -15,7 +19,7 @@ class OnlineCacheInterceptor(private val context: Context) : Interceptor {
             cacheControl!!.contains("must-revalidate") || cacheControl!!.contains("max-age=0")
         ) {
             originalResponse.newBuilder()
-                .header("Cache-Control", "public, max-age=" + 10)
+                .header("Cache-Control", "public, max-age=" + 10) //keep cache for 10 seconds when online
                 .build()
         } else {
             originalResponse

@@ -7,6 +7,10 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 
+/**
+ * This factory gets a map containing view model class names as values
+ * It creates view model on demand using create method defined below
+ */
 @Singleton
 class ViewModelFactory
 @Inject constructor(

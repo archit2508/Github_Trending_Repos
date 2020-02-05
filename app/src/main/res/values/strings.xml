@@ -3,4 +3,9 @@
     <string name="transition_image">transition_image</string>
     <string name="transition_title">transition_title</string>
     <string name="transition_desc">transition_desc</string>
+    <string name="period">weekly</string>
+    <string name="message_digest_algo">MD5</string>
+    <string name="empty_text_error">Search input cannot be empty</string>
+    <string name="api_fail_error_text">Unable to get search results OR No results found</string>
+    <string name="placeholder_text_for_search_input_edit_text">Enter a programming language for trending repositories for this language</string>
 </resources>

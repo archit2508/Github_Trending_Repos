@@ -11,6 +11,9 @@ import com.example.top_github.data.model.TrendingRepos
 import com.example.top_github.imageCaching.core.ImageManager
 import kotlinx.android.synthetic.main.result_item.view.*
 
+/**
+ * Acts as adapter which will bind list of trending repositories to recycler view on main screen
+ */
 class RepoListAdapter(
     private var repoList: List<TrendingRepos>,
     var itemClickListener: OnItemClickListener,
@@ -36,16 +39,20 @@ class RepoListAdapter(
         holder.itemView.desc.text = repoList[position].username
 
         holder.itemView.setOnClickListener {
-            itemClickListener?.onResultItemClick(
+            itemClickListener.onResultItemClick(
                 repoList[position],
                 holder.itemView.imageView,
                 holder.itemView.title,
-                holder.itemView.desc)
+                holder.itemView.desc
+            )
         }
     }
 
     class RepoItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
+    /**
+     * will take care of click on each list item
+     */
     interface OnItemClickListener {
         fun onResultItemClick(repoDetails: TrendingRepos, imageView: ImageView, titleView: TextView, descView: TextView)
     }

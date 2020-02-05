@@ -3,13 +3,17 @@ package com.example.top_github.imageCaching.cache
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import com.example.top_github.R
 import com.jakewharton.disklrucache.DiskLruCache
 import java.io.*
 import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-
+/**
+ * Class implementing disk cache by using a map to store bitmap as values on disk
+ * Uses md5 algo to generate keys for bitmaps using image url
+ */
 class DiskCache private constructor(private val context: Context) :
     ImageCache {
     private var cache: DiskLruCache =
@@ -70,7 +74,7 @@ class DiskCache private constructor(private val context: Context) :
         try {
 
             // Static getInstance method is called with hashing MD5
-            val md = MessageDigest.getInstance("MD5")
+            val md = MessageDigest.getInstance(R.string.message_digest_algo.toString())
 
             // digest() method is called to calculate message digest
             //  of an input digest() return array of byte

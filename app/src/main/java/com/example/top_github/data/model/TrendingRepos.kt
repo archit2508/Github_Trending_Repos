@@ -6,7 +6,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TrendingRepos (
-
     @SerializedName("username") val username : String,
     @SerializedName("name") val name : String,
     @SerializedName("type") val type : String,

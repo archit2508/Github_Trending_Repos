@@ -3,6 +3,10 @@ package com.example.top_github.imageCaching.cache
 import android.graphics.Bitmap
 import android.util.LruCache
 
+/**
+ * Class implementing LRU cache cache by using a map to store bitmap as values
+ * Uses url of image as key in map
+ */
 class MemoryCache (newMaxSize: Int) :
     ImageCache {
     private val cache : LruCache<String, Bitmap>

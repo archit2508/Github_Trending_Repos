@@ -5,6 +5,9 @@ import com.example.top_github.viewModels.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 
+/**
+ * Provides view model factory
+ */
 @Module
 abstract class ViewModelFactoryModule{
 

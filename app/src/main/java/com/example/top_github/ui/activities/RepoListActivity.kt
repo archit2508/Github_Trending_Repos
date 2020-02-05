@@ -49,6 +49,10 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
     }
 
 
+    /**
+     * Observing repo data stored in live data to update recycler view whenever data changes
+     * This will ensure data integrity on config changes as well because live data is lifecycle aware
+     */
     private fun observeRepoListData() {
         repoListViewModel.repoListLiveData.observe(this,
             Observer<List<TrendingRepos>> { t ->
@@ -59,6 +63,9 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
     }
 
 
+    /**
+     * Used to remove empty text error from edit text field whenever user types again
+     */
     private fun setTextChangedListenerOnSearchInput() {
         searchInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -75,7 +82,7 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
 
 
     /**
-     * Will hit search api when search icon is clicked inside edit text
+     * Will hit search api when search icon is clicked inside edit text field
      */
     private fun setTouchListenerOnSearchInput() {
         searchInput.setOnTouchListener(object : View.OnTouchListener {
@@ -84,7 +91,7 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
                     if (event.rawX >= (searchInput.right - searchInput.compoundDrawables[2].bounds.width())) {
                         if (searchInput.text.toString().isEmpty()) {
                             searchLayout.isErrorEnabled = true
-                            searchLayout.error = "Search input cannot be empty"
+                            searchLayout.error = R.string.empty_text_error.toString()
                         } else {
                             setProgressVisible()
                             hitSearchApi(searchInput.text.toString(), hideKeyboard = true, clearFocus = true)
@@ -98,6 +105,9 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
     }
 
 
+    /**
+     * Responsible for calling github api using injected view model to fetch repositories data
+     */
     private fun hitSearchApi(
         language: String,
         hideKeyboard: Boolean,
@@ -115,9 +125,9 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
                     else if(t.getError()!=null)
                         Toast.makeText(this, (t.getError() as Throwable).message, Toast.LENGTH_LONG).show()
                     else
-                        Toast.makeText(this, "Unable to get search results OR No results found", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, R.string.api_fail_error_text, Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this, "Unable to get search results OR No results found", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, R.string.api_fail_error_text, Toast.LENGTH_LONG).show()
                 }
             }
         )
@@ -161,6 +171,9 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
     }
 
 
+    /**
+     * navigates to details screen when repository item is clicked inside recycler view
+     */
     override fun onResultItemClick(repoDetails: TrendingRepos, imageView: ImageView, titleView: TextView, descView: TextView) {
         NavigationUtils.navigateToDetailsScreen(this, repoDetails, imageView, titleView, descView)
     }

@@ -11,15 +11,16 @@
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/search_input_edit_text_margin_value"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/searchInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter language for trending repositories"
+            android:hint="@string/placeholder_text_for_search_input_edit_text"
             android:drawableTint="@color/colorAccent"
+            android:textSize="@dimen/search_input_edit_text_text_size"
             android:hapticFeedbackEnabled="true"
             android:drawableRight="@drawable/ic_search_black_24dp"/>
 
@@ -27,16 +28,16 @@
 
     <ProgressBar
         android:id="@+id/loading_indicator"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="@dimen/progress_bar_uniform_height_width"
+        android:layout_height="@dimen/progress_bar_uniform_height_width"
         android:layout_gravity="center"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvResults"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="@dimen/repolist_recycler_view_margin_values"
+        android:layout_marginRight="@dimen/repolist_recycler_view_margin_values"
+        android:layout_marginBottom="@dimen/repolist_recycler_view_margin_values"
         tools:itemCount="3"
         tools:listitem="@layout/result_item"
         android:layout_width="match_parent"

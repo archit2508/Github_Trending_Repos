@@ -21,6 +21,9 @@ import javax.inject.Singleton
 import java.io.File
 import java.util.concurrent.TimeUnit
 
+/**
+ * Provides all network call related dependencies
+ */
 @Module
 class NetworkCallModule {
 

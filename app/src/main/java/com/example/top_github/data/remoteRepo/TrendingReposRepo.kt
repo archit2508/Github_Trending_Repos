@@ -1,6 +1,7 @@
 package com.example.top_github.data.remoteRepo
 
 import androidx.lifecycle.MutableLiveData
+import com.example.top_github.R
 import com.example.top_github.data.model.TrendingRepos
 import com.example.top_github.data.response.Response
 import com.example.top_github.data.service.TrendingReposService
@@ -9,11 +10,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
+/**
+ * Repository to fetch data from remote source
+ */
 class TrendingReposRepo(private val trendingReposService: TrendingReposService) {
 
     fun fetchTrendingRepos(language: String): MutableLiveData<Response>{
         val reposLiveData = MutableLiveData<Response>()
-        trendingReposService.getTrendingRepos(language, "weekly")
+        trendingReposService.getTrendingRepos(language, R.string.period.toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { EspressoTestingIdlingResource.increment() }

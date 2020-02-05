@@ -7,6 +7,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
+/**
+ * This module binds repo list screen's view model to its respective key
+ */
 @Module
 abstract class RepoListViewModelModule {
 

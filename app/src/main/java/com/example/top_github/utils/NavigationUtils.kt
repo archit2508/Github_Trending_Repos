@@ -12,9 +12,15 @@ import com.example.top_github.R
 import com.example.top_github.data.model.TrendingRepos
 import com.example.top_github.ui.activities.RepoDetailsActivity
 
+/**
+ * Utility class which navigation related methods
+ */
 class NavigationUtils {
 
     companion object{
+        /**
+         * navigates to repo detail screen using SHARED ELEMENT TRANSITION
+         */
         fun navigateToDetailsScreen(context: Activity, repoDetails: TrendingRepos, imageView: ImageView, titleView: TextView, descView: TextView){
             val imageViewPair = Pair.create<View, String>(imageView, context.getString(R.string.transition_image))
             val titleViewPair = Pair.create<View, String>(titleView, context.getString(R.string.transition_title))

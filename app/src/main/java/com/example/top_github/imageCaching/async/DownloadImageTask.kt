@@ -9,6 +9,9 @@ import com.example.top_github.imageCaching.cache.ImageCache
 import java.net.HttpURLConnection
 import java.net.URL
 
+/**
+ * Downloads bitmap image on background thread and throws response on main thread using handler
+ */
 class DownloadImageTask(
     private val url: String,
     private val imageView: ImageView,
@@ -43,9 +46,9 @@ class DownloadImageTask(
         return bitmap
     }
 
-    private fun updateImageView(imageview: ImageView, bitmap: Bitmap) {
+    private fun updateImageView(imageView: ImageView, bitmap: Bitmap) {
         uiHandler.post {
-            imageview.setImageBitmap(bitmap)
+            imageView.setImageBitmap(bitmap)
         }
     }
 }

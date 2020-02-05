@@ -10,6 +10,9 @@ import com.example.top_github.imageCaching.cache.Config
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 
+/**
+ * This manager will be exposed to outer world to load and cache images downloaded from web
+ */
 class ImageManager private constructor(context: Context, cacheSize: Int) {
     private val cache = CacheRepository(context, cacheSize)
     private val executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors())

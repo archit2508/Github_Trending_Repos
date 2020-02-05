@@ -2,6 +2,11 @@ package com.example.top_github.data.response
 
 import com.example.top_github.data.model.TrendingRepos
 
+/**
+ * A generic api response class which will store
+ * 1. data fetched when status is success
+ * 2. exception when status is failed
+ */
 class Response{
     private var repos: List<TrendingRepos>? = null
     private var error: Throwable? = null

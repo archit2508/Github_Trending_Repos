@@ -5,6 +5,9 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * api service interface describing context path and query params
+ */
 interface TrendingReposService{
 
     @GET("developers")

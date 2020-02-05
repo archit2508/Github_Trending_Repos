@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:elevation="10dp"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="5dp">
+        android:elevation="@dimen/debug_cardview_elevation"
+        android:layout_margin="@dimen/item_cardview_margin"
+        app:cardCornerRadius="@dimen/item_cardview_corner_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,8 +20,8 @@
 
             <LinearLayout
                 android:id="@+id/avatar_parent"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="@dimen/item_avatar_height_width"
+                android:layout_height="@dimen/item_avatar_height_width"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
-                    android:transitionName="transition_image"
+                    android:transitionName="@string/transition_image"
                     android:scaleType="centerCrop" />
             </LinearLayout>
 
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/item_text_layout_startmargin"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/avatar_parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -49,19 +49,18 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/item_title_text_size"
                     android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:transitionName="transition_title"
+                    android:textColor="@color/black"
+                    android:transitionName="@string/transition_title"
                     tools:text="Iron Man" />
 
                 <TextView
                     android:id="@+id/desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:transitionName="transition_desc"
-                    android:textSize="14sp"
+                    android:transitionName="@string/transition_desc"
+                    android:textSize="@dimen/item_desc_text_size"
                     tools:text="hello" />
 
             </LinearLayout>
@@ -70,10 +69,4 @@
 
     </androidx.cardview.widget.CardView>
 
-    <!--    <View-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_marginTop="10dp"-->
-    <!--        android:layout_marginBottom="10dp"-->
-    <!--        android:background="#dadada" />-->
 </LinearLayout>
