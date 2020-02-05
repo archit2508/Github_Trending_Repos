@@ -74,7 +74,7 @@ class DiskCache private constructor(private val context: Context) :
         try {
 
             // Static getInstance method is called with hashing MD5
-            val md = MessageDigest.getInstance(R.string.message_digest_algo.toString())
+            val md = MessageDigest.getInstance(context.resources.getString(R.string.message_digest_algo))
 
             // digest() method is called to calculate message digest
             //  of an input digest() return array of byte

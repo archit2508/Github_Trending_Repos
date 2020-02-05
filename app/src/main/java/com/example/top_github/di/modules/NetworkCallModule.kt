@@ -85,7 +85,7 @@ class NetworkCallModule {
     }
 
     @Provides
-    internal fun provideTrendingReposRepo(service: TrendingReposService): TrendingReposRepo {
-        return TrendingReposRepo(service)
+    internal fun provideTrendingReposRepo(service: TrendingReposService, context: Application): TrendingReposRepo {
+        return TrendingReposRepo(service, context)
     }
 }

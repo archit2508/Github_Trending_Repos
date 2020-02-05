@@ -91,7 +91,7 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
                     if (event.rawX >= (searchInput.right - searchInput.compoundDrawables[2].bounds.width())) {
                         if (searchInput.text.toString().isEmpty()) {
                             searchLayout.isErrorEnabled = true
-                            searchLayout.error = R.string.empty_text_error.toString()
+                            searchLayout.error = resources.getString(R.string.empty_text_error)
                         } else {
                             setProgressVisible()
                             hitSearchApi(searchInput.text.toString(), hideKeyboard = true, clearFocus = true)
@@ -125,9 +125,9 @@ class RepoListActivity : DaggerAppCompatActivity(), RepoListAdapter.OnItemClickL
                     else if(t.getError()!=null)
                         Toast.makeText(this, (t.getError() as Throwable).message, Toast.LENGTH_LONG).show()
                     else
-                        Toast.makeText(this, R.string.api_fail_error_text, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, resources.getString(R.string.api_fail_error_text), Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this, R.string.api_fail_error_text, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, resources.getString(R.string.api_fail_error_text), Toast.LENGTH_LONG).show()
                 }
             }
         )
