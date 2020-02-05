@@ -1,10 +1,10 @@
 package com.example.top_github.viewModels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.top_github.data.model.TrendingRepos
 import com.example.top_github.data.remoteRepo.TrendingReposRepo
+import com.example.top_github.data.response.Response
 import javax.inject.Inject
 
 class RepoListViewModel @Inject constructor() : ViewModel() {
@@ -16,7 +16,7 @@ class RepoListViewModel @Inject constructor() : ViewModel() {
         repoListLiveData.postValue(repoList)
     }
 
-    fun fetchTrendingRepos(language: String): MutableLiveData<List<TrendingRepos>>{
+    fun fetchTrendingRepos(language: String): MutableLiveData<Response>{
         return trendingReposRepo.fetchTrendingRepos(language)
     }
 }

@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.top_github.R
 import com.example.top_github.data.model.TrendingRepos
 import com.example.top_github.imageCaching.core.ImageManager
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.result_item.view.*
-import javax.inject.Inject
 
 class RepoListAdapter(
     private var repoList: List<TrendingRepos>,

@@ -1,0 +1,38 @@
+[
+  {
+    "username": "joshdholtz",
+    "name": "Josh Holtz",
+    "type": "user",
+    "url": "https://github.com/joshdholtz",
+    "avatar": "https://avatars3.githubusercontent.com/u/401294",
+    "repo": {
+      "name": "Sentry-Android",
+      "description": "[Deprecated] Use official \"raven-java\" library",
+      "url": "https://github.com/joshdholtz/Sentry-Android"
+    }
+  },
+  {
+    "username": "kevinsawicki",
+    "name": "Kevin Sawicki",
+    "type": "user",
+    "url": "https://github.com/kevinsawicki",
+    "avatar": "https://avatars1.githubusercontent.com/u/671378",
+    "repo": {
+      "name": "http-request",
+      "description": "Java HTTP Request Library",
+      "url": "https://github.com/kevinsawicki/http-request"
+    }
+  },
+  {
+    "username": "adriancole",
+    "name": "Adrian Cole",
+    "type": "user",
+    "url": "https://github.com/adriancole",
+    "avatar": "https://avatars0.githubusercontent.com/u/64215",
+    "repo": {
+      "name": "zipkin-voltdb",
+      "description": "Zipkin integrations for VoltDB",
+      "url": "https://github.com/adriancole/zipkin-voltdb"
+    }
+  }
+]

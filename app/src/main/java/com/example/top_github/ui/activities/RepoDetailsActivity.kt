@@ -1,15 +1,13 @@
 package com.example.top_github.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
 import com.example.top_github.R
 import com.example.top_github.data.model.TrendingRepos
 import com.example.top_github.imageCaching.core.ImageManager
 import com.example.top_github.utils.AppConstants
-import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_repo_details.*
-import kotlinx.android.synthetic.main.result_item.view.*
 import javax.inject.Inject
 
 class RepoDetailsActivity : DaggerAppCompatActivity() {
@@ -40,6 +38,9 @@ class RepoDetailsActivity : DaggerAppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finishAfterTransition()
+        if(Build.VERSION.SDK_INT>=21)
+            finishAfterTransition()
+        else
+            finish()
     }
 }
